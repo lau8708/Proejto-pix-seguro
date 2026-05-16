@@ -24,8 +24,7 @@ public class ContaService {
             throw new ValorDepositoInvalidoException();
         }
 
-        Conta conta = contaRepository
-                .buscarPorCpf(authService.getUsuarioLogado().getCpf());
+        Conta conta = contaRepository.buscarPorCpf(authService.getUsuarioLogado().getCpf());
 
         conta.setSaldo(conta.getSaldo().add(valor));
     }
@@ -36,8 +35,7 @@ public class ContaService {
             throw new ValorInvalidoException();
         }
 
-        Conta conta = contaRepository
-                .buscarPorCpf(authService.getUsuarioLogado().getCpf());
+        Conta conta = contaRepository.buscarPorCpf(authService.getUsuarioLogado().getCpf());
 
         if (conta.getSaldoDisponivel().compareTo(valor) < 0) {
             throw new ValorSaqueInvalidoException();
@@ -47,7 +45,6 @@ public class ContaService {
     }
 
     public Conta buscarContaLogada() {
-        return contaRepository
-                .buscarPorCpf(authService.getUsuarioLogado().getCpf());
+        return contaRepository.buscarPorCpf(authService.getUsuarioLogado().getCpf());
     }
 }
